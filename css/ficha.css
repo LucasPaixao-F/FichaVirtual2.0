@@ -1,0 +1,464 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lato:wght@400;700&display=swap");
+
+.title {
+	font-size: 10px;
+}
+
+:root {
+	/* Paleta de Cores D&D */
+	--bg-paper: #fdf6e3; /* Cor de pergaminho claro */
+	--border-main: #58180d; /* Marrom avermelhado escuro (Sangue de Dragão) */
+	--text-color: #1a1a1a;
+	--line-color: #cecece;
+	--accent-gold: #c9ad6a;
+
+	/* Fontes */
+	--font-header: "Cinzel", serif;
+	--font-body: "Lato", sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #eee; /* Fundo da mesa fora da folha */
+	font-family: var(--font-body);
+	color: var(--text-color);
+	margin: 0;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+/* ==================== ESTRUTURA DA FOLHA (A4) ==================== */
+#ficha-personagem {
+	width: 100%;
+	max-width: 1000px; /* Largura aproximada para desktop */
+}
+
+.sheet-page {
+	background-color: var(--bg-paper);
+	width: 100%;
+	/* Aspecto de folha de papel */
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+	padding: 40px;
+	margin-bottom: 30px;
+	position: relative;
+	border: 1px solid #dcdcdc;
+}
+
+/* Inputs Estilizados (Linhas de escrita) */
+input[type="text"],
+input[type="number"],
+textarea {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid var(--line-color);
+	font-family: inherit;
+	font-size: 1rem;
+	color: #000;
+	width: 100%;
+	transition: border-color 0.3s;
+}
+
+input:focus,
+textarea:focus {
+	outline: none;
+	border-bottom: 2px solid var(--border-main);
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+textarea {
+	resize: vertical;
+	border: 1px solid var(--line-color); /* Caixas de texto têm borda leve */
+	background-image: linear-gradient(
+		transparent,
+		transparent 1.5rem,
+		#f0f0f0 1.5rem
+	);
+	background-size: 100% 1.55rem;
+	line-height: 1.55rem;
+}
+
+h2,
+h3 {
+	font-family: var(--font-header);
+	text-transform: uppercase;
+	color: var(--border-main);
+	margin-top: 0;
+	border-bottom: 2px solid var(--border-main);
+	padding-bottom: 5px;
+}
+
+/* ==================== CABEÇALHO ==================== */
+.container-header {
+	display: flex;
+	gap: 20px;
+	background: #fdf1dc;
+	border: 3px double var(--border-main);
+	padding: 15px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+}
+
+.header-main-info {
+	width: 35%;
+	display: flex;
+	align-items: center;
+}
+.header-main-info input {
+	font-size: 1.5rem;
+	font-family: var(--font-header);
+	border-bottom: 2px solid var(--border-main);
+}
+
+.header-sub-info {
+	width: 65%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.field-group {
+	display: flex;
+	gap: 15px;
+}
+.field-group label {
+	display: flex;
+	flex-direction: column;
+	font-size: 0.7rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	flex: 1;
+}
+
+/* ==================== LAYOUT PRINCIPAL (GRID) ==================== */
+.core-mechanics-layout {
+	display: grid;
+	grid-template-columns: 100px 250px 1fr 250px; /* Atributos | Perícias | Combate | RP */
+	gap: 15px;
+	align-items: start;
+}
+
+/* Layout Responsivo para telas menores */
+@media (max-width: 900px) {
+	.core-mechanics-layout {
+		grid-template-columns: 1fr 1fr;
+	}
+	.container-attributes {
+		grid-row: span 2;
+	}
+}
+
+/* ==================== ATRIBUTOS (Barra Lateral Esquerda) ==================== */
+.container-attributes {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	background-color: #e8e3d3;
+	padding: 10px;
+	border-radius: 20px;
+	border: 1px solid #ccc;
+}
+
+/* ==================== ATRIBUTOS: CORREÇÃO DE ALINHAMENTO ==================== */
+
+/* 1. O QUADRADO PRINCIPAL */
+.attribute-box {
+	background: white;
+	border: 2px solid var(--border-main);
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column; /* Um item embaixo do outro */
+	align-items: center; /* Centraliza horizontalmente (eixo X) */
+	justify-content: center; /* Centraliza verticalmente (eixo Y) - ISSO TIRA O ESPAÇO EXTRA */
+	position: relative; /* Referência para a bolinha absoluta */
+	height: 90px; /* Altura fixa */
+	width: 100%;
+	padding-bottom: 15px; /* Espaço extra embaixo para não colar na bolinha */
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. O RÓTULO (FORÇA, DES...) */
+.attribute-box label {
+	font-size: 0.6rem;
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: -0.5px;
+	line-height: 1;
+	margin: 0; /* Remove margens para colar no número */
+	padding-top: 5px; /* Pequeno respiro do topo */
+	text-align: center;
+	width: 100%;
+}
+
+/* 3. O MODIFICADOR (NÚMERO GRANDE: +3) */
+.mod-score {
+	font-size: 1.8rem;
+	font-weight: bold;
+	text-align: center;
+	background: transparent;
+	border: none !important;
+
+	width: 100%; /* Ocupa a largura toda */
+	height: auto; /* Altura automática baseada na fonte */
+	margin: 0; /* Remove espaçamento extra entre label e número */
+	padding: 0;
+
+	color: var(--text-color);
+	line-height: 1.2; /* Altura de linha justa */
+}
+
+/* 4. O VALOR DO ATRIBUTO (BOLINHA DE BAIXO: 10) */
+.ability-score {
+	/* Posicionamento Fora do Fluxo */
+	position: relative;
+	bottom: -12px; /* Pendurado na borda inferior */
+	left: 50%; /* Começa no meio do quadrado */
+	transform: translateX(-50%); /* Volta 50% para ficar EXATAMENTE no centro */
+	width: 45px;
+	height: 25px;
+	border: 2px solid var(--border-main);
+	border-radius: 15px;
+	background: white;
+
+	/* ALINHAMENTO DO TEXTO DENTRO DA BOLINHA */
+	text-align: center; /* <--- Isso resolve o número saindo pelo lado */
+	font-size: 0.9rem;
+	font-weight: normal;
+	padding: 0;
+	margin: 0;
+	z-index: 10;
+}
+
+/* Remove a borda azul ao clicar */
+.attribute-box input:focus {
+	outline: none;
+	background-color: rgba(255, 230, 200, 0.3);
+}
+
+/* ==================== PERÍCIAS E SALVAGUARDAS ==================== */
+.container-skills-saves {
+	font-size: 0.85rem;
+}
+
+.skill-line {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #ddd;
+	padding: 2px 0;
+}
+
+.skill-line input[type="checkbox"] {
+	accent-color: var(--border-main);
+	margin-right: 5px;
+}
+
+.skill-line input[type="number"] {
+	width: 30px;
+	text-align: center;
+	border: none;
+	border-bottom: 1px solid #aaa;
+	margin-right: 8px;
+}
+
+.container-inspiration,
+.container-proficiency {
+	border: 2px solid var(--border-main);
+	border-radius: 8px;
+	padding: 8px;
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-weight: bold;
+}
+.container-proficiency input {
+	width: 40px;
+	text-align: center;
+	font-size: 1.2rem;
+}
+
+/* ==================== COMBATE (Centro) ==================== */
+.container-vitals-header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.vital-box {
+	width: 35%;
+	border: 3px double var(--border-main);
+	padding: 10px 5px;
+	text-align: center;
+	border-radius: 10px 10px 25px 25px;
+	background: white;
+}
+
+.vital-box input {
+	text-align: center;
+	font-size: 1.5rem;
+	border: none;
+	font-weight: bold;
+}
+
+.vital-box label {
+	display: block;
+	font-size: 0.7rem;
+	text-transform: uppercase;
+	font-weight: bold;
+	justify-content: center;
+}
+
+.container-hp {
+	border: 1px solid #aaa;
+	padding: 10px;
+	background: white;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
+
+.attacks-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 10px;
+}
+.attacks-table th {
+	font-size: 0.7rem;
+	text-align: left;
+	color: #666;
+}
+.attacks-table td {
+	padding: 5px;
+	background: #f7f7f7;
+	border-bottom: 2px solid white;
+}
+
+/* ==================== PERSONALIDADE (Direita) ==================== */
+.container-roleplay-features {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.rp-box {
+	background: white;
+	border: 2px solid #ccc;
+	border-radius: 10px 0 10px 0;
+	padding: 10px;
+	height: 100px;
+	overflow: hidden;
+	position: relative;
+}
+.rp-box textarea {
+	height: 100%;
+	border: none;
+	background: transparent;
+}
+.rp-box::before {
+	/* Rótulo pseudo-elemento */
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 0.6rem;
+	color: #aaa;
+	padding: 2px 5px;
+}
+
+/* ==================== MAGIAS (Página 3) ==================== */
+.container-spell-header {
+	display: flex;
+	justify-content: space-around;
+	background: #f0e6d2;
+	padding: 20px;
+	border-radius: 10px;
+	border: 1px solid var(--border-main);
+	margin-bottom: 30px;
+}
+.container-spell-header label {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: var(--font-header);
+	font-size: 0.8rem;
+}
+.container-spell-header input {
+	width: 60px;
+	text-align: center;
+	font-size: 1.5rem;
+	border: 2px solid var(--border-main);
+	border-radius: 50%;
+	height: 50px;
+	background: white;
+	margin-top: 5px;
+}
+
+.container-spell-list-grid {
+	column-count: 3; /* Layout de colunas estilo jornal */
+	column-gap: 20px;
+}
+
+.spell-level {
+	break-inside: avoid;
+	background: white;
+	border: 1px solid var(--border-main);
+	margin-bottom: 20px;
+	padding: 10px;
+	box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.level-header {
+	display: flex;
+	align-items: center;
+	background: var(--border-main);
+	color: white;
+	padding: 5px 10px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+.level-header h3 {
+	margin: 0;
+	color: white;
+	border: none;
+	margin-right: auto;
+}
+.level-header input {
+	width: 30px;
+	height: 25px;
+	background: white;
+	border: none;
+	margin-left: 5px;
+	text-align: center;
+	border-radius: 3px;
+}
+
+.spell-rows {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.spell-rows li {
+	display: flex;
+	align-items: center;
+	padding: 5px 0;
+	border-bottom: 1px dotted #ccc;
+}
+.spell-rows li input[type="checkbox"] {
+	margin-right: 10px;
+}
+
+/* ==================== UTILITÁRIOS VISUAIS ==================== */
+hr {
+	border: 0;
+	height: 2px;
+	background-image: linear-gradient(
+		to right,
+		rgba(88, 24, 13, 0),
+		rgba(88, 24, 13, 0.75),
+		rgba(88, 24, 13, 0)
+	);
+	margin: 20px 0;
+}

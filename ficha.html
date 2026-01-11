@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/ficha.css" />
+		<title>Ficha de Personagem D&D 5e - Editável</title>
+	</head>
+	<body>
+		<form id="ficha-personagem">
+			<section id="pagina-1" class="sheet-page">
+				<header class="container-header">
+					<div class="header-main-info">
+						<label
+							>Nome do Personagem:
+							<input type="text" name="nome_personagem"
+						/></label>
+					</div>
+					<div class="header-sub-info">
+						<div class="field-group">
+							<label
+								>Classe e Nível: <input type="text" name="classe_nivel"
+							/></label>
+							<label
+								>Antecedente: <input type="text" name="antecedente"
+							/></label>
+							<label
+								>Nome do Jogador:
+								<input type="text" name="nome_jogador"
+							/></label>
+						</div>
+						<div class="field-group">
+							<label>Raça: <input type="text" name="raca" /></label>
+							<label
+								>Alinhamento: <input type="text" name="alinhamento"
+							/></label>
+							<label
+								>Pontos de Experiência: <input type="number" name="xp"
+							/></label>
+						</div>
+					</div>
+				</header>
+
+				<hr />
+
+				<main class="core-mechanics-layout">
+					<div class="container-attributes">
+						<div class="attribute-box">
+							<label>Força</label>
+							<input type="number" class="mod-score" placeholder="" />
+							<input type="number" class="ability-score" />
+						</div>
+						<div class="attribute-box">
+							<label>Destreza</label>
+							<input type="number" class="mod-score" />
+							<input type="number" class="ability-score" />
+						</div>
+						<div class="attribute-box">
+							<label>Constituição</label>
+							<input type="number" class="mod-score" />
+							<input type="number" class="ability-score" />
+						</div>
+						<div class="attribute-box">
+							<label>Inteligência</label>
+							<input type="number" class="mod-score" />
+							<input type="number" class="ability-score" />
+						</div>
+						<div class="attribute-box">
+							<label>Sabedoria</label>
+							<input type="number" class="mod-score" />
+							<input type="number" class="ability-score" />
+						</div>
+						<div class="attribute-box">
+							<label>Carisma</label>
+							<input type="number" class="mod-score" />
+							<input type="number" class="ability-score" />
+						</div>
+					</div>
+
+					<div class="container-skills-saves">
+						<div class="container-inspiration">
+							<input type="checkbox" /> <label>Inspiração</label>
+						</div>
+
+						<div class="container-proficiency">
+							<input type="number" value="" />
+							<label>Bônus de Proficiência</label>
+						</div>
+
+						<div class="container-saving-throws">
+							<h3>Salvaguardas</h3>
+							<div class="skill-line">
+								<input type="checkbox" /> <input type="number" /> Força
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Destreza
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Constituição
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Inteligência
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Sabedoria
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Carisma
+							</div>
+						</div>
+
+						<div class="container-skills">
+							<h3>Perícias</h3>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Acrobacia (Des)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Arcanismo (Int)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Atletismo (For)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Atuação (Car)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Enganação (Car)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Furtividade (Des)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> História (Int)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Intimidação (Car)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Intuição (Sab)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Investigação (Int)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" /> <input type="number" /> Lidar
+								com Animais (Sab)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Medicina (Sab)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Natureza (Int)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Percepção (Sab)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Persuasão (Car)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Prestidigitação (Des)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Religião (Int)
+							</div>
+							<div class="skill-line">
+								<input type="checkbox" />
+								<input type="number" /> Sobrevivência (Sab)
+							</div>
+						</div>
+					</div>
+
+					<div class="container-combat-stats">
+						<div class="container-vitals-header">
+							<div class="vital-box ac-box">
+								<input type="number" />
+								<label>Classe de Armadura</label>
+							</div>
+							<div class="vital-box">
+								<input type="number" />
+								<label>Iniciativa</label>
+							</div>
+							<div class="vital-box">
+								<input type="text" />
+								<label>Deslocamento</label>
+							</div>
+						</div>
+
+						<div class="container-hp">
+							<div class="hp-max">
+								<label
+									>Pontos de Vida Máximos: <input type="number"
+								/></label>
+							</div>
+							<textarea
+								class="hp-current"
+								placeholder="Pontos de Vida Atuais"
+							></textarea>
+							<textarea
+								class="hp-temp"
+								placeholder="Pontos de Vida Temporários"
+							></textarea>
+						</div>
+
+						<div class="container-hit-dice-death">
+							<div class="hit-dice">
+								<label>Total: <input type="text" /></label>
+								<textarea placeholder="Dado de Vida"></textarea>
+							</div>
+							<div class="death-saves">
+								<label>Salvaguarda contra Morte</label>
+								<div class="saves-row">
+									Sucessos: <input type="checkbox" /><input
+										type="checkbox"
+									/><input type="checkbox" />
+								</div>
+								<div class="saves-row">
+									Falhas: <input type="checkbox" /><input
+										type="checkbox"
+									/><input type="checkbox" />
+								</div>
+							</div>
+						</div>
+
+						<div class="container-attacks">
+							<h3>Ataques & Conjuração</h3>
+							<table class="attacks-table">
+								<thead>
+									<tr>
+										<th>Nome</th>
+										<th>Bônus Ataque</th>
+										<th>Dano/Tipo</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+									</tr>
+									<tr>
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+									</tr>
+									<tr>
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+									</tr>
+								</tbody>
+							</table>
+							<textarea
+								class="attacks-notes"
+								placeholder="Outras notas de combate"
+							></textarea>
+						</div>
+
+						<div class="container-equipment">
+							<h3>Equipamento</h3>
+							<div class="currency-column">
+								<label>PC <input type="number" /></label>
+								<label>PP <input type="number" /></label>
+								<label>PE <input type="number" /></label>
+								<label>PO <input type="number" /></label>
+								<label>PL <input type="number" /></label>
+							</div>
+							<textarea class="equipment-list"></textarea>
+						</div>
+					</div>
+
+					<div class="container-roleplay-features">
+						<div class="container-traits-flaws">
+							<div class="rp-box">
+								<textarea
+									placeholder="Traços de Personalidade"
+								></textarea>
+							</div>
+							<div class="rp-box">
+								<textarea placeholder="Ideais"></textarea>
+							</div>
+							<div class="rp-box">
+								<textarea placeholder="Vínculos"></textarea>
+							</div>
+							<div class="rp-box">
+								<textarea placeholder="Fraquezas"></textarea>
+							</div>
+						</div>
+
+						<div class="container-features-traits">
+							<h3>Características & Talentos</h3>
+							<textarea></textarea>
+						</div>
+					</div>
+				</main>
+
+				<div class="container-bottom-left">
+					<div class="passive-perception">
+						<label
+							>Sabedoria Passiva (Percepção): <input type="number"
+						/></label>
+					</div>
+					<div class="proficiencies-languages">
+						<h3>Outras Proficiências & Idiomas</h3>
+						<textarea></textarea>
+					</div>
+				</div>
+			</section>
+
+			<section id="pagina-2" class="sheet-page">
+				<h2>Biografia</h2>
+
+				<div class="container-header-bio">
+					<label>Nome do Personagem: <input type="text" /></label>
+				</div>
+
+				<div class="container-physical-traits">
+					<label>Idade: <input type="text" /></label>
+					<label>Altura: <input type="text" /></label>
+					<label>Peso: <input type="text" /></label>
+					<label>Cor dos Olhos: <input type="text" /></label>
+					<label>Cor da Pele: <input type="text" /></label>
+					<label>Cor do Cabelo: <input type="text" /></label>
+				</div>
+
+				<div class="container-bio-layout">
+					<div class="container-appearance">
+						<h3>Aparência do Personagem</h3>
+						<div class="image-placeholder">Imagem</div>
+					</div>
+
+					<div class="container-backstory">
+						<h3>História do Personagem</h3>
+						<textarea rows="10"></textarea>
+					</div>
+
+					<div class="container-allies">
+						<h3>Aliados & Organizações</h3>
+						<div class="faction-symbol">Símbolo</div>
+						<textarea rows="5"></textarea>
+					</div>
+
+					<div class="container-additional-features">
+						<h3>Características e Talentos Adicionais</h3>
+						<textarea rows="5"></textarea>
+					</div>
+
+					<div class="container-treasure">
+						<h3>Tesouros</h3>
+						<textarea rows="5"></textarea>
+					</div>
+				</div>
+			</section>
+
+			<section id="pagina-3" class="sheet-page">
+				<h2>Ficha de Magias</h2>
+
+				<div class="container-spell-header">
+					<label>Classe Conjuradora: <input type="text" /></label>
+					<label>Atributo de Conjuração: <input type="text" /></label>
+					<label>CD para evitar magias: <input type="number" /></label>
+					<label
+						>Modificador de Ataque Mágico: <input type="number"
+					/></label>
+				</div>
+
+				<div class="container-spell-list-grid">
+					<div class="spell-level container-level-0">
+						<h3>0 - Truques</h3>
+						<ul>
+							<li><input type="text" /></li>
+							<li><input type="text" /></li>
+							<li><input type="text" /></li>
+							<li><input type="text" /></li>
+							<li><input type="text" /></li>
+							<li><input type="text" /></li>
+							<li><input type="text" /></li>
+							<li><input type="text" /></li>
+						</ul>
+					</div>
+
+					<div class="spell-level container-level-1">
+						<div class="level-header">
+							<h3>1</h3>
+							<label>Total de Espaços: <input type="number" /></label>
+							<label>Espaços Utilizados: <input type="number" /></label>
+						</div>
+						<ul class="spell-rows">
+							<li>
+								<input type="checkbox" />
+								<input type="text" placeholder="Nome da Magia" />
+							</li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+						</ul>
+					</div>
+
+					<div class="spell-level container-level-2">
+						<div class="level-header">
+							<h3>2</h3>
+							<label>Total: <input type="number" /></label>
+							<label>Usados: <input type="number" /></label>
+						</div>
+						<ul class="spell-rows">
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+						</ul>
+					</div>
+
+					<div class="spell-level container-level-3">
+						<div class="level-header">
+							<h3>3</h3>
+							<label>Total: <input type="number" /></label>
+							<label>Usados: <input type="number" /></label>
+						</div>
+						<ul class="spell-rows">
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+						</ul>
+					</div>
+
+					<div class="spell-level container-level-4">
+						<div class="level-header">
+							<h3>4</h3>
+							<label>Total: <input type="number" /></label>
+							<label>Usados: <input type="number" /></label>
+						</div>
+						<ul class="spell-rows">
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+						</ul>
+					</div>
+
+					<div class="spell-level container-level-5">
+						<div class="level-header">
+							<h3>5</h3>
+							<input type="number" /><input type="number" />
+						</div>
+						<ul class="spell-rows">
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+						</ul>
+					</div>
+					<div class="spell-level container-level-6">
+						<div class="level-header">
+							<h3>6</h3>
+							<input type="number" /><input type="number" />
+						</div>
+						<ul class="spell-rows">
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+						</ul>
+					</div>
+					<div class="spell-level container-level-7">
+						<div class="level-header">
+							<h3>7</h3>
+							<input type="number" /><input type="number" />
+						</div>
+						<ul class="spell-rows">
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+						</ul>
+					</div>
+					<div class="spell-level container-level-8">
+						<div class="level-header">
+							<h3>8</h3>
+							<input type="number" /><input type="number" />
+						</div>
+						<ul class="spell-rows">
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+						</ul>
+					</div>
+					<div class="spell-level container-level-9">
+						<div class="level-header">
+							<h3>9</h3>
+							<input type="number" /><input type="number" />
+						</div>
+						<ul class="spell-rows">
+							<li><input type="checkbox" /> <input type="text" /></li>
+							<li><input type="checkbox" /> <input type="text" /></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</form>
+	</body>
+</html>
