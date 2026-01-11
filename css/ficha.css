@@ -247,15 +247,20 @@ input[type="checkbox"] {
 }
 
 .container-attributes,
-.container-skills-saves,
 .container-combat-stats,
 .container-roleplay-features,
 .container-bottom-left,
 .container-bio-layout,
 .container-spell-list-grid {
 	display: grid;
-	gap: 16px;
+	gap: 20px;
 	min-width: 0;
+}
+
+.container-skills-saves {
+	align-content: start;
+	grid-template-rows: min-content min-content min-content auto;
+	gap: 30px !important;
 }
 
 .attribute-box {
@@ -285,17 +290,23 @@ input[type="checkbox"] {
 }
 
 .container-skills-saves {
-	background: var(--panel);
-	border-radius: var(--radius-sm);
-	padding: 14px;
-	border: 1px solid rgba(255, 255, 255, 0.08);
+	display: grid;
+	gap: 18px;
+
+	/* AQUI ESTÁ O CONTROLE MANUAL:
+       A ordem dos valores segue a ordem dos elementos no seu HTML:
+       1º valor = Inspiração
+       2º valor = Bônus de Proficiência
+       3º valor = Salvaguardas
+       4º valor = Perícias
+    */
+	grid-template-rows: 40px 50px auto 1fr;
 }
 
 .container-inspiration,
 .container-proficiency {
-	display: flex;
-	align-items: center;
-	gap: 10px;
+	padding: 8px; /* Reduz o "enchimento" interno se estiver muito gordo */
+	height: fit-content; /* Garante que a caixa não cresça sozinha */
 }
 
 .container-saving-throws h3,
@@ -318,16 +329,25 @@ input[type="checkbox"] {
 
 .skill-line {
 	display: grid;
-	grid-template-columns: 18px minmax(70px, 90px) 1fr;
+	grid-template-columns: 18px 40px 1fr;
 	align-items: center;
 	column-gap: 12px;
 	font-size: 0.9rem;
 	color: var(--ink-soft);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+	padding: 2px 0;
 }
 
 .skill-line input[type="number"] {
-	width: 100%;
-	text-align: center;
+	background: transparent; /* Remove o fundo preto */
+	border: none; /* Remove as bordas laterais/topo */
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Apenas linha embaixo */
+	border-radius: 0; /* Remove arredondamento */
+	color: var(--ink); /* Cor do texto clara */
+	padding: 0;
+	height: 20px; /* Altura compacta */
+	font-size: 1rem;
+	font-weight: 600;
 }
 
 .container-combat-stats {
@@ -438,7 +458,7 @@ input[type="checkbox"] {
 }
 
 .rp-box textarea {
-	min-height: 70px;
+	min-height: 200px;
 }
 
 .container-features-traits textarea {
