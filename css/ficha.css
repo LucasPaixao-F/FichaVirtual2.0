@@ -1,464 +1,581 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lato:wght@400;700&display=swap");
-
-.title {
-	font-size: 10px;
-}
+@charset "UTF-8";
 
 :root {
-	/* Paleta de Cores D&D */
-	--bg-paper: #fdf6e3; /* Cor de pergaminho claro */
-	--border-main: #58180d; /* Marrom avermelhado escuro (Sangue de Dragão) */
-	--text-color: #1a1a1a;
-	--line-color: #cecece;
-	--accent-gold: #c9ad6a;
-
-	/* Fontes */
-	--font-header: "Cinzel", serif;
-	--font-body: "Lato", sans-serif;
+	--bg-0: #0b0b10;
+	--bg-1: #11121a;
+	--bg-2: #161923;
+	--panel: #1e2028;
+	--panel-2: #262a33;
+	--ink: #e6e0d4;
+	--ink-soft: #bcb4a3;
+	--accent: #c8a368;
+	--accent-2: #7f5b35;
+	--edge: rgba(200, 163, 104, 0.35);
+	--shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+	--radius: 18px;
+	--radius-sm: 12px;
 }
 
 * {
 	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-	background-color: #eee; /* Fundo da mesa fora da folha */
-	font-family: var(--font-body);
-	color: var(--text-color);
-	margin: 0;
-	padding: 20px;
-	display: flex;
-	justify-content: center;
+	font-family: "Cormorant Garamond", "Garamond", "Times New Roman", serif;
+	background: radial-gradient(circle at top, #1c1f2b, #0b0b10 55%),
+		linear-gradient(140deg, #141826 10%, #0b0b10 60%, #141826 100%);
+	color: var(--ink);
+	min-height: 100vh;
+	line-height: 1.5;
+	position: relative;
 }
 
-/* ==================== ESTRUTURA DA FOLHA (A4) ==================== */
-#ficha-personagem {
-	width: 100%;
-	max-width: 1000px; /* Largura aproximada para desktop */
+body::before,
+body::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	z-index: -1;
+}
+
+body::before {
+	background: radial-gradient(
+			circle at 20% 20%,
+			rgba(200, 163, 104, 0.08),
+			transparent 50%
+		),
+		repeating-linear-gradient(
+			-45deg,
+			rgba(200, 163, 104, 0.04) 0,
+			rgba(200, 163, 104, 0.04) 1px,
+			transparent 1px,
+			transparent 7px
+		);
+}
+
+body::after {
+	background: radial-gradient(
+		circle at 80% 0%,
+		rgba(19, 23, 35, 0.9),
+		transparent 45%
+	);
+}
+
+.site-shell {
+	width: min(1200px, 94vw);
+	margin: 40px auto 80px;
+	display: grid;
+	gap: 28px;
+}
+
+.site-hero {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 24px 28px;
+	border-radius: var(--radius);
+	background: linear-gradient(
+		145deg,
+		rgba(28, 30, 41, 0.95),
+		rgba(18, 20, 29, 0.95)
+	);
+	border: 1px solid rgba(200, 163, 104, 0.2);
+	box-shadow: var(--shadow);
+	animation: float-in 0.8s ease-out;
+}
+
+.brand {
+	max-width: 560px;
+}
+
+.eyebrow {
+	text-transform: uppercase;
+	letter-spacing: 0.35em;
+	font-size: 0.7rem;
+	color: var(--ink-soft);
+	margin-bottom: 8px;
+	font-family: "Cinzel", "Cormorant Garamond", serif;
+}
+
+.brand h1 {
+	font-family: "Cinzel", "Cormorant Garamond", serif;
+	font-size: clamp(2rem, 4vw, 3.2rem);
+	font-weight: 600;
+	margin-bottom: 6px;
+	color: var(--ink);
+}
+
+.subtitle {
+	color: var(--ink-soft);
+	font-size: 1rem;
+}
+
+.sheet-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.tab-button {
+	border: 1px solid rgba(200, 163, 104, 0.35);
+	background: rgba(16, 18, 26, 0.6);
+	color: var(--ink);
+	padding: 10px 16px;
+	border-radius: 999px;
+	font-family: "Cinzel", "Cormorant Garamond", serif;
+	font-size: 0.85rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+	border-color: var(--accent);
+	color: var(--accent);
+}
+
+.tab-button.is-active {
+	background: linear-gradient(
+		120deg,
+		rgba(200, 163, 104, 0.35),
+		rgba(127, 91, 53, 0.45)
+	);
+	border-color: var(--accent);
+	color: #1c140a;
+}
+
+form {
+	display: grid;
+	gap: 24px;
 }
 
 .sheet-page {
-	background-color: var(--bg-paper);
-	width: 100%;
-	/* Aspecto de folha de papel */
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-	padding: 40px;
-	margin-bottom: 30px;
-	position: relative;
-	border: 1px solid #dcdcdc;
+	background: rgba(20, 22, 30, 0.92);
+	border-radius: var(--radius);
+	border: 1px solid rgba(200, 163, 104, 0.2);
+	padding: 28px;
+	box-shadow: var(--shadow);
+	animation: rise-in 0.6s ease-out;
 }
 
-/* Inputs Estilizados (Linhas de escrita) */
-input[type="text"],
-input[type="number"],
-textarea {
-	background: transparent;
-	border: none;
-	border-bottom: 1px solid var(--line-color);
-	font-family: inherit;
-	font-size: 1rem;
-	color: #000;
-	width: 100%;
-	transition: border-color 0.3s;
-}
-
-input:focus,
-textarea:focus {
-	outline: none;
-	border-bottom: 2px solid var(--border-main);
-	background-color: rgba(255, 255, 255, 0.3);
-}
-
-textarea {
-	resize: vertical;
-	border: 1px solid var(--line-color); /* Caixas de texto têm borda leve */
-	background-image: linear-gradient(
-		transparent,
-		transparent 1.5rem,
-		#f0f0f0 1.5rem
-	);
-	background-size: 100% 1.55rem;
-	line-height: 1.55rem;
-}
-
-h2,
-h3 {
-	font-family: var(--font-header);
+.page-title {
+	font-family: "Cinzel", "Cormorant Garamond", serif;
+	font-size: clamp(1.4rem, 2.6vw, 2rem);
+	margin-bottom: 18px;
 	text-transform: uppercase;
-	color: var(--border-main);
-	margin-top: 0;
-	border-bottom: 2px solid var(--border-main);
-	padding-bottom: 5px;
+	letter-spacing: 0.15em;
+	color: var(--accent);
 }
 
-/* ==================== CABEÇALHO ==================== */
-.container-header {
-	display: flex;
-	gap: 20px;
-	background: #fdf1dc;
-	border: 3px double var(--border-main);
-	padding: 15px;
-	border-radius: 10px;
-	margin-bottom: 20px;
+hr {
+	border: none;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, var(--edge), transparent);
+	margin: 18px 0 22px;
 }
 
-.header-main-info {
-	width: 35%;
+label {
 	display: flex;
 	align-items: center;
+	gap: 10px;
+	font-size: 0.95rem;
+	color: var(--ink-soft);
 }
-.header-main-info input {
-	font-size: 1.5rem;
-	font-family: var(--font-header);
-	border-bottom: 2px solid var(--border-main);
+
+input,
+textarea,
+select {
+	font-family: "Source Sans 3", "Trebuchet MS", sans-serif;
+	background: rgba(9, 10, 15, 0.8);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	color: var(--ink);
+	padding: 8px 10px;
+	border-radius: var(--radius-sm);
+	width: 100%;
+	min-width: 0;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+textarea {
+	min-height: 90px;
+	resize: vertical;
+}
+
+input[type="checkbox"] {
+	width: auto;
+	accent-color: var(--accent);
+}
+
+.container-header {
+	display: grid;
+	gap: 18px;
+}
+
+.header-main-info label {
+	font-size: 1rem;
 }
 
 .header-sub-info {
-	width: 65%;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	display: grid;
+	gap: 18px;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .field-group {
-	display: flex;
-	gap: 15px;
-}
-.field-group label {
-	display: flex;
-	flex-direction: column;
-	font-size: 0.7rem;
-	font-weight: bold;
-	text-transform: uppercase;
-	flex: 1;
+	display: grid;
+	gap: 12px;
+	min-width: 0;
 }
 
-/* ==================== LAYOUT PRINCIPAL (GRID) ==================== */
 .core-mechanics-layout {
 	display: grid;
-	grid-template-columns: 100px 250px 1fr 250px; /* Atributos | Perícias | Combate | RP */
-	gap: 15px;
-	align-items: start;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 20px;
 }
 
-/* Layout Responsivo para telas menores */
-@media (max-width: 900px) {
-	.core-mechanics-layout {
-		grid-template-columns: 1fr 1fr;
-	}
-	.container-attributes {
-		grid-row: span 2;
-	}
+.container-attributes,
+.container-skills-saves,
+.container-combat-stats,
+.container-roleplay-features,
+.container-bottom-left,
+.container-bio-layout,
+.container-spell-list-grid {
+	display: grid;
+	gap: 16px;
+	min-width: 0;
 }
 
-/* ==================== ATRIBUTOS (Barra Lateral Esquerda) ==================== */
-.container-attributes {
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
-	background-color: #e8e3d3;
-	padding: 10px;
-	border-radius: 20px;
-	border: 1px solid #ccc;
-}
-
-/* ==================== ATRIBUTOS: CORREÇÃO DE ALINHAMENTO ==================== */
-
-/* 1. O QUADRADO PRINCIPAL */
 .attribute-box {
-	background: white;
-	border: 2px solid var(--border-main);
-	border-radius: 15px;
-	display: flex;
-	flex-direction: column; /* Um item embaixo do outro */
-	align-items: center; /* Centraliza horizontalmente (eixo X) */
-	justify-content: center; /* Centraliza verticalmente (eixo Y) - ISSO TIRA O ESPAÇO EXTRA */
-	position: relative; /* Referência para a bolinha absoluta */
-	height: 90px; /* Altura fixa */
-	width: 100%;
-	padding-bottom: 15px; /* Espaço extra embaixo para não colar na bolinha */
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+	background: var(--panel);
+	border-radius: var(--radius-sm);
+	padding: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	display: grid;
+	row-gap: 6px;
+	column-gap: 4px;
+	text-align: center;
+	grid-template-columns: 1fr 1fr;
 }
 
-/* 2. O RÓTULO (FORÇA, DES...) */
 .attribute-box label {
-	font-size: 0.6rem;
-	font-weight: 900;
+	justify-content: center;
 	text-transform: uppercase;
-	letter-spacing: -0.5px;
-	line-height: 1;
-	margin: 0; /* Remove margens para colar no número */
-	padding-top: 5px; /* Pequeno respiro do topo */
+	letter-spacing: 0.1em;
+	font-size: 0.8rem;
+	color: var(--accent);
+	grid-column: 1 / -1;
+}
+
+.mod-score.is-readonly {
+	font-weight: 600;
 	text-align: center;
-	width: 100%;
 }
 
-/* 3. O MODIFICADOR (NÚMERO GRANDE: +3) */
-.mod-score {
-	font-size: 1.8rem;
-	font-weight: bold;
-	text-align: center;
-	background: transparent;
-	border: none !important;
-
-	width: 100%; /* Ocupa a largura toda */
-	height: auto; /* Altura automática baseada na fonte */
-	margin: 0; /* Remove espaçamento extra entre label e número */
-	padding: 0;
-
-	color: var(--text-color);
-	line-height: 1.2; /* Altura de linha justa */
-}
-
-/* 4. O VALOR DO ATRIBUTO (BOLINHA DE BAIXO: 10) */
-.ability-score {
-	/* Posicionamento Fora do Fluxo */
-	position: relative;
-	bottom: -12px; /* Pendurado na borda inferior */
-	left: 50%; /* Começa no meio do quadrado */
-	transform: translateX(-50%); /* Volta 50% para ficar EXATAMENTE no centro */
-	width: 45px;
-	height: 25px;
-	border: 2px solid var(--border-main);
-	border-radius: 15px;
-	background: white;
-
-	/* ALINHAMENTO DO TEXTO DENTRO DA BOLINHA */
-	text-align: center; /* <--- Isso resolve o número saindo pelo lado */
-	font-size: 0.9rem;
-	font-weight: normal;
-	padding: 0;
-	margin: 0;
-	z-index: 10;
-}
-
-/* Remove a borda azul ao clicar */
-.attribute-box input:focus {
-	outline: none;
-	background-color: rgba(255, 230, 200, 0.3);
-}
-
-/* ==================== PERÍCIAS E SALVAGUARDAS ==================== */
 .container-skills-saves {
-	font-size: 0.85rem;
-}
-
-.skill-line {
-	display: flex;
-	align-items: center;
-	border-bottom: 1px solid #ddd;
-	padding: 2px 0;
-}
-
-.skill-line input[type="checkbox"] {
-	accent-color: var(--border-main);
-	margin-right: 5px;
-}
-
-.skill-line input[type="number"] {
-	width: 30px;
-	text-align: center;
-	border: none;
-	border-bottom: 1px solid #aaa;
-	margin-right: 8px;
+	background: var(--panel);
+	border-radius: var(--radius-sm);
+	padding: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .container-inspiration,
 .container-proficiency {
-	border: 2px solid var(--border-main);
-	border-radius: 8px;
-	padding: 8px;
-	margin-bottom: 15px;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	font-weight: bold;
-}
-.container-proficiency input {
-	width: 40px;
-	text-align: center;
-	font-size: 1.2rem;
+	gap: 10px;
 }
 
-/* ==================== COMBATE (Centro) ==================== */
+.container-saving-throws h3,
+.container-skills h3,
+.container-attacks h3,
+.container-equipment h3,
+.container-features-traits h3,
+.container-appearance h3,
+.container-backstory h3,
+.container-allies h3,
+.container-additional-features h3,
+.container-treasure h3,
+.container-spell-header h3 {
+	font-family: "Cinzel", "Cormorant Garamond", serif;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--accent);
+	font-size: 0.9rem;
+}
+
+.skill-line {
+	display: grid;
+	grid-template-columns: 18px minmax(70px, 90px) 1fr;
+	align-items: center;
+	column-gap: 12px;
+	font-size: 0.9rem;
+	color: var(--ink-soft);
+}
+
+.skill-line input[type="number"] {
+	width: 100%;
+	text-align: center;
+}
+
+.container-combat-stats {
+	display: grid;
+	gap: 16px;
+}
+
 .container-vitals-header {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	gap: 12px;
 }
 
 .vital-box {
-	width: 35%;
-	border: 3px double var(--border-main);
-	padding: 10px 5px;
+	background: var(--panel);
+	border-radius: var(--radius-sm);
+	padding: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
 	text-align: center;
-	border-radius: 10px 10px 25px 25px;
-	background: white;
-}
-
-.vital-box input {
-	text-align: center;
-	font-size: 1.5rem;
-	border: none;
-	font-weight: bold;
-}
-
-.vital-box label {
-	display: block;
-	font-size: 0.7rem;
-	text-transform: uppercase;
-	font-weight: bold;
-	justify-content: center;
 }
 
 .container-hp {
-	border: 1px solid #aaa;
+	display: grid;
+	gap: 10px;
+}
+
+.container-hit-dice-death {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+	gap: 12px;
+}
+
+.death-saves {
+	background: rgba(15, 16, 22, 0.8);
+	border-radius: var(--radius-sm);
 	padding: 10px;
-	background: white;
-	border-radius: 5px;
-	margin-bottom: 15px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.saves-row {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 0.85rem;
+	color: var(--ink-soft);
+	margin-top: 6px;
+}
+
+.container-attacks {
+	overflow-x: auto;
 }
 
 .attacks-table {
 	width: 100%;
+	min-width: 420px;
 	border-collapse: collapse;
-	margin-bottom: 10px;
 }
-.attacks-table th {
-	font-size: 0.7rem;
-	text-align: left;
-	color: #666;
-}
+
+.attacks-table th,
 .attacks-table td {
-	padding: 5px;
-	background: #f7f7f7;
-	border-bottom: 2px solid white;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	padding: 6px;
+	text-align: left;
+	font-size: 0.85rem;
 }
 
-/* ==================== PERSONALIDADE (Direita) ==================== */
-.container-roleplay-features {
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
+.attacks-table th {
+	color: var(--accent);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
 }
 
-.rp-box {
-	background: white;
-	border: 2px solid #ccc;
-	border-radius: 10px 0 10px 0;
-	padding: 10px;
-	height: 100px;
-	overflow: hidden;
-	position: relative;
-}
-.rp-box textarea {
-	height: 100%;
-	border: none;
-	background: transparent;
-}
-.rp-box::before {
-	/* Rótulo pseudo-elemento */
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 0;
-	font-size: 0.6rem;
-	color: #aaa;
-	padding: 2px 5px;
+.attacks-table input {
+	width: 100%;
 }
 
-/* ==================== MAGIAS (Página 3) ==================== */
-.container-spell-header {
-	display: flex;
-	justify-content: space-around;
-	background: #f0e6d2;
-	padding: 20px;
-	border-radius: 10px;
-	border: 1px solid var(--border-main);
-	margin-bottom: 30px;
+.container-equipment {
+	display: grid;
+	gap: 10px;
 }
-.container-spell-header label {
+
+.currency-column {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	gap: 8px;
+}
+
+.currency-column label {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
-	font-family: var(--font-header);
-	font-size: 0.8rem;
+	gap: 10px;
 }
-.container-spell-header input {
-	width: 60px;
+
+.currency-column label input {
+	flex: 1;
+	min-width: 70px;
+}
+
+.container-roleplay-features {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 16px;
+}
+
+.container-traits-flaws {
+	display: grid;
+	gap: 10px;
+}
+
+.rp-box textarea {
+	min-height: 70px;
+}
+
+.container-features-traits textarea {
+	min-height: 200px;
+}
+
+.container-bottom-left {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 16px;
+}
+
+.container-header-bio {
+	margin-bottom: 16px;
+}
+
+.container-physical-traits {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 12px;
+	margin-bottom: 16px;
+}
+
+.container-bio-layout {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+	gap: 16px;
+}
+
+.container-appearance,
+.container-backstory,
+.container-allies,
+.container-additional-features,
+.container-treasure {
+	background: var(--panel);
+	border-radius: var(--radius-sm);
+	padding: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	display: grid;
+	gap: 10px;
+}
+
+.image-placeholder,
+.faction-symbol {
+	border: 1px dashed rgba(200, 163, 104, 0.4);
+	border-radius: var(--radius-sm);
+	padding: 18px;
 	text-align: center;
-	font-size: 1.5rem;
-	border: 2px solid var(--border-main);
-	border-radius: 50%;
-	height: 50px;
-	background: white;
-	margin-top: 5px;
+	color: var(--ink-soft);
+	background: rgba(12, 13, 19, 0.7);
+}
+
+.container-spell-header {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 12px;
+	margin-bottom: 16px;
 }
 
 .container-spell-list-grid {
-	column-count: 3; /* Layout de colunas estilo jornal */
-	column-gap: 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 16px;
 }
 
 .spell-level {
-	break-inside: avoid;
-	background: white;
-	border: 1px solid var(--border-main);
-	margin-bottom: 20px;
-	padding: 10px;
-	box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+	background: var(--panel);
+	border-radius: var(--radius-sm);
+	padding: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	display: grid;
+	gap: 10px;
+}
+
+.spell-level ul {
+	list-style: none;
+	display: grid;
+	gap: 8px;
 }
 
 .level-header {
-	display: flex;
-	align-items: center;
-	background: var(--border-main);
-	color: white;
-	padding: 5px 10px;
-	border-radius: 5px;
-	margin-bottom: 10px;
-}
-.level-header h3 {
-	margin: 0;
-	color: white;
-	border: none;
-	margin-right: auto;
-}
-.level-header input {
-	width: 30px;
-	height: 25px;
-	background: white;
-	border: none;
-	margin-left: 5px;
-	text-align: center;
-	border-radius: 3px;
+	display: grid;
+	gap: 8px;
 }
 
-.spell-rows {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
 .spell-rows li {
-	display: flex;
+	display: grid;
+	grid-template-columns: 18px 1fr;
+	gap: 8px;
 	align-items: center;
-	padding: 5px 0;
-	border-bottom: 1px dotted #ccc;
-}
-.spell-rows li input[type="checkbox"] {
-	margin-right: 10px;
 }
 
-/* ==================== UTILITÁRIOS VISUAIS ==================== */
-hr {
-	border: 0;
-	height: 2px;
-	background-image: linear-gradient(
-		to right,
-		rgba(88, 24, 13, 0),
-		rgba(88, 24, 13, 0.75),
-		rgba(88, 24, 13, 0)
-	);
-	margin: 20px 0;
+@media (max-width: 780px) {
+	.site-shell {
+		margin: 24px auto 60px;
+	}
+
+	.site-hero {
+		padding: 20px;
+	}
+
+	.sheet-page {
+		padding: 20px;
+	}
+
+	.skill-line {
+		grid-template-columns: 18px minmax(60px, 80px) 1fr;
+		column-gap: 10px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+@keyframes float-in {
+	from {
+		opacity: 0;
+		transform: translateY(18px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes rise-in {
+	from {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
