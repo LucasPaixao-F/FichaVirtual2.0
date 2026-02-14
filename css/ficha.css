@@ -24,7 +24,8 @@
 
 body {
 	font-family: "Cormorant Garamond", "Garamond", "Times New Roman", serif;
-	background: radial-gradient(circle at top, #1c1f2b, #0b0b10 55%),
+	background:
+		radial-gradient(circle at top, #1c1f2b, #0b0b10 55%),
 		linear-gradient(140deg, #141826 10%, #0b0b10 60%, #141826 100%);
 	color: var(--ink);
 	min-height: 100vh;
@@ -42,7 +43,8 @@ body::after {
 }
 
 body::before {
-	background: radial-gradient(
+	background:
+		radial-gradient(
 			circle at 20% 20%,
 			rgba(200, 163, 104, 0.08),
 			transparent 50%
@@ -199,7 +201,9 @@ select {
 	border-radius: var(--radius-sm);
 	width: 100%;
 	min-width: 0;
-	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
 }
 
 input:focus-visible,
@@ -279,7 +283,7 @@ input[type="checkbox"] {
 	justify-content: center;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
-	font-size: 0.8rem;
+	font-size: 1.5rem;
 	color: var(--accent);
 	grid-column: 1 / -1;
 }
@@ -324,15 +328,16 @@ input[type="checkbox"] {
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	color: var(--accent);
-	font-size: 0.9rem;
+	font-size: 1.3rem;
 }
 
 .skill-line {
 	display: grid;
+	margin-top: 0.5rem;
 	grid-template-columns: 18px 40px 1fr;
 	align-items: center;
 	column-gap: 12px;
-	font-size: 0.9rem;
+	font-size: 1.2rem;
 	color: var(--ink-soft);
 	border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 	padding: 2px 0;
